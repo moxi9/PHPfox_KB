@@ -1,0 +1,106 @@
+
+@import "../../../../PF.Base/less/mixins";
+@import "../../../../PF.Base/less/variables";
+
+.markdown-content {
+	* {
+		color:@textColor !important;
+	}
+
+	h1, h2, h3, h4, h5, h6 {
+		font-size:20px;
+		font-weight:600;
+		letter-spacing:1px;
+		color:@linkFocus !important;
+		padding:0px 0px 10px 0px;
+		margin:20px 0px 10px 0px;
+	}
+
+	img {
+		max-width:@contentWidth - 20;
+	}
+
+	h1 {
+		font-size:30px;
+	}
+
+	h1, h2 {
+		font-size:25px;
+		border-bottom:1px darken(@blockBg, 8%) solid;
+	}
+
+	strong {
+		font-weight:600;
+		color:@linkFocus !important;
+	}
+
+	p {
+		margin-bottom:15px;
+	}
+
+	a, a:hover {
+		color:@linkColor !important;
+	}
+
+	a:hover {
+		opacity:0.6;
+	}
+
+	pre {
+		margin-bottom:15px;
+	}
+
+	ul, ol {
+		list-style-type:disc;
+		padding-left:2em;
+		margin-bottom:15px;
+	}
+
+	code {
+		.reset();
+		display:inline-block;
+		vertical-align:middle;
+		line-height:inherit;
+		background:darken(@blockBg, 4%);
+		padding:2px 4px;
+		margin-bottom:2px;
+	}
+
+	pre {
+		code {
+			font-family:monospace;
+			max-height:400px;
+			overflow:auto;
+			white-space:pre;
+			background:darken(@blockBg, 4%);
+			display:block;
+			padding:10px;
+		}
+	}
+
+	table {
+		width:auto;
+		border-bottom:1px darken(@blockBg, 8%) solid;
+		border-right:1px darken(@blockBg, 8%) solid;
+		border-top:1px darken(@blockBg, 8%) solid;
+		margin-bottom:15px;
+
+		tr {
+			border-bottom:1px darken(@blockBg, 8%) solid;
+		}
+
+		th {
+			border:0px;
+			background:darken(@blockBg, 4%);
+			font-weight:600;
+			color:@linkFocus !important;
+			text-transform:uppercase;
+			padding:10px;
+		}
+
+		td {
+			padding:10px;
+			border-left:1px darken(@blockBg, 8%) solid;
+		}
+	}
+}

@@ -7,9 +7,18 @@ use Apps\PHPfox_KB\Model\Article,
 
 use Core\Auth\User;
 
-new Route\Group('/kb', function() {
-	new Route('/add', function(Controller $controller) {
+new Route\Group(setting('kb_route'), function() {
+
+	$form = function(Controller $controller) {
 		(new User())->membersOnly();
+
+		$edit = false;
+		if ($controller->request->get('id')) {
+			$edit = (new Article())->get((int) $controller->request->get('id'));
+			if (!$controller->active->isAdmin() && $edit->user->id != $controller->active->id ) {
+				throw error('Unable to edit this article.');
+			}
+		}
 
 		$validator = new Validator();
 		$validator->rule('title')->required();
@@ -17,17 +26,31 @@ new Route\Group('/kb', function() {
 		$validator->make();
 
 		if ($controller->request->isPost()) {
-			$article = (new Article())->post((object) $controller->request->get('val'));
+			$val = (object) $controller->request->get('val');
+			$article = ($edit ? (new Article())->put($edit->id, $val) : (new Article())->post($val));
 
-			return $controller->url->send($article->permalink);
+			return $controller->url->send($article->permalink, [], _p(($edit ? 'Article successfully updated!' : 'Article successfully created!')));
 		}
 
-		$controller->asset('<script src="//cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>');
+		$categories = [];
+		foreach ((new Category())->get() as $category) {
+			$categories[$category->id] = $category->value;
+		}
 
-		return $controller->render('add.html');
-	});
+		$controller->section(setting('kb_section_name'), '/kb');
+		return $controller->render('add.html', [
+			'edit' => $edit,
+			'categoryOptions' => $categories
+		]);
+	};
+
+
+	new Route('/add', $form);
+	new Route('/edit', $form);
 
 	new Route('/', function(Controller $controller) {
+
+		$controller->section(setting('kb_section_name'), '/kb');
 		return $controller->render('index.html', [
 			'categories' => (new Category())->get()
 		]);
@@ -41,7 +64,7 @@ new Route\Group('/kb', function() {
 		}
 
 		$controller->h1($article->title, $article->permalink);
-		$controller->section('KB', $controller->url->make('/kb'));
+		$controller->section(setting('kb_section_name'), '/kb');
 		$controller->title($article->title);
 
 		return $controller->render('view.html', [

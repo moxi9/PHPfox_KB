@@ -14,5 +14,15 @@
 	"credits": {
 		"NextStepWebs": "https://github.com/NextStepWebs/simplemde-markdown-editor/",
 		"erusev": "https://github.com/erusev/parsedown"
+	},
+	"settings": {
+		"kb_section_name": {
+			"info": "Name of the section",
+			"value": "KB"
+		},
+		"kb_route": {
+			"info": "Main Router",
+			"value": "/kb"
+		}
 	}
 }

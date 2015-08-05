@@ -1,4 +1,16 @@
 <div class="item_view">
+	<div class="item_info">
+		{% if article.can_edit %}
+		<div class="item_bar">
+			<div class="item_bar_action_holder">
+				<a href="#" class="item_bar_action"><span>Actions</span></a>
+				<ul>
+					<li><a href="{{ url('/kb/edit', {id: article.id}) }}">Edit</a></li>
+				</ul>
+			</div>
+		</div>
+		{% endif %}
+	</div>
 	<div class="item_content">
 		<div class="markdown-content">
 			{{ article.content }}
