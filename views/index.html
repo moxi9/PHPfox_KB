@@ -1,0 +1,8 @@
+{% for category in categories %}
+<section>
+	<h1><a href="#">{{ category.value }}</a></h1>
+	{% for article in category.articles %}
+		<a href="{{ article.permalink }}">{{ article.title }}</a>
+	{% endfor %}
+</section>
+{% endfor %}

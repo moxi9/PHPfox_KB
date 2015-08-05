@@ -1,0 +1,9 @@
+{% import '@Theme/macro/form.html' as Form %}
+
+<form method="post" action="{{ url('/kb/add') }}" class="ajax_post">
+	{{ Form.text('title', null, 'Title') }}
+	<div id="markdown-editor">
+		<textarea name="val[content]"></textarea>
+	</div>
+	{{ Form.submit('Post') }}
+</form>

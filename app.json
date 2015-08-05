@@ -1,0 +1,18 @@
+{
+	"id": "PHPfox_KB",
+	"name": "KB",
+	"version": 1.0,
+	"icon": "",
+	"head": [
+		"<link rel=\"stylesheet\" href=\"//cdn.jsdelivr.net/simplemde/latest/simplemde.min.css\">"
+	],
+	"map": {
+		"title": "title",
+		"link": "\/kb\/:id\/view",
+		"content": "@view\/feed.html"
+	},
+	"credits": {
+		"NextStepWebs": "https://github.com/NextStepWebs/simplemde-markdown-editor/",
+		"erusev": "https://github.com/erusev/parsedown"
+	}
+}
