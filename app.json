@@ -1,28 +1,28 @@
 {
-	"id": "PHPfox_KB",
-	"name": "KB",
-	"version": 1.0,
-	"icon": "",
-	"head": [
-		"<link rel=\"stylesheet\" href=\"//cdn.jsdelivr.net/simplemde/latest/simplemde.min.css\">"
-	],
-	"map": {
-		"title": "title",
-		"link": "\/kb\/:id\/view",
-		"content": "@view\/feed.html"
-	},
-	"credits": {
-		"NextStepWebs": "https://github.com/NextStepWebs/simplemde-markdown-editor/",
-		"erusev": "https://github.com/erusev/parsedown"
-	},
-	"settings": {
-		"kb_section_name": {
-			"info": "Name of the section",
-			"value": "KB"
-		},
-		"kb_route": {
-			"info": "Main Router",
-			"value": "/kb"
-		}
-	}
+    "id": "PHPfox_KB",
+    "name": "KB",
+    "version": 1.1,
+    "icon": "",
+    "head": [
+        "<link rel=\"stylesheet\" href=\"\/\/cdn.jsdelivr.net\/simplemde\/latest\/simplemde.min.css\">"
+    ],
+    "map": {
+        "title": "title",
+        "link": "\/kb\/:id\/view",
+        "content": "@view\/feed.html"
+    },
+    "credits": {
+        "NextStepWebs": "https:\/\/github.com\/NextStepWebs\/simplemde-markdown-editor\/",
+        "erusev": "https:\/\/github.com\/erusev\/parsedown"
+    },
+    "settings": {
+        "kb_section_name": {
+            "info": "Name of the section",
+            "value": "KB"
+        },
+        "kb_route": {
+            "info": "Main Router",
+            "value": "\/kb"
+        }
+    }
 }

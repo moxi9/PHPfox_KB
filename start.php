@@ -44,17 +44,15 @@ new Route\Group(setting('kb_route'), function() {
 		]);
 	};
 
-
-	new Route('/add', $form);
-	new Route('/edit', $form);
-
 	new Route('/', function(Controller $controller) {
-
 		$controller->section(setting('kb_section_name'), '/kb');
 		return $controller->render('index.html', [
 			'categories' => (new Category())->get()
 		]);
 	});
+
+	new Route('/add', $form);
+	new Route('/edit', $form);
 
 	(new Route('/:id/:title'))->where([':id' => '([0-9])'])->run(function(Controller $controller, $id, $title) {
 		$article = (new Article())->get($id);
